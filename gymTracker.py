@@ -6,25 +6,21 @@ import pprint
 
 ## function initialisations 
 # updateDictionaries will update all the dictionaires after 7 days
-def updateDictionaries():
+def updateDictionaries(newSets):
     for k in chest_workout:
-        chest_workout[k] = '15*3'
+        chest_workout[k] = newSets
     for k in shoulder_workout:
-        shoulder_workout[k] = '15*3'
+        shoulder_workout[k] = newSets
     for k in bicep_workout:
-        bicep_workout[k] = '15*3'
+        bicep_workout[k] = newSets
     for k in legs_workout:
-        legs_workout[k] = '15*3'
+        legs_workout[k] = newSets
     for k in back_workout:
-        back_workout[k] = '15*3'
+        back_workout[k] = newSets
 
 def calcBMI():
     BMI = weight / (height/100)**2
     print(f"You BMI is {BMI}")
-
-    
-    
-
 
 # creating login portal
 # creating a email dictionary
@@ -36,10 +32,11 @@ uName = input("Enter your Username --> ")
 email = input("Enter your email-id --> ")
 emailDict[uName]=email
 print(emailDict)
+
 # Building some logic around BMI and weight trainings : 
 height = float(input("Enter your height in cm: "))
 weight = float(input("Enter your weight in kg: "))
-calcBMI()
+bmi = calcBMI()
 
 #if userWeight:
     #pass
@@ -124,6 +121,12 @@ bicep_workout = {
     'Wide-Grip Curl' :"12*3",
 }
 
+
+# creating a dictionary for the difficulty level 
+diffDict = {
+    '1':"20*4",
+    '2':"15*4"
+}
 # User input for day.
 dayToday = int(input("""What day is it today?
                     1. Monday
@@ -146,7 +149,7 @@ if dayToday:
     #building logic to check bodypart fetched to then fetch the workout chart
     if partToTrain == "chest":
         #print("in")
-        pprint.pprint(chest)
+        pprint.pprint(chest_workout)
     if partToTrain == "shoulders":
         pprint.pprint(shoulder_workout)
     if partToTrain == "legs":
@@ -160,6 +163,22 @@ if dayToday:
 counter +=1
 if counter == 7:
     updateDictionaries()
+
+#Creating a feedback system post 14 days of workout
+# this feedback system call will only be there after 21 days of workout
+weight = float(input("Enter your weight in kg: "))
+newbmi = calcBMI()
+if newbmi < bmi:
+    diffLevel = int(input("""Update your training regime to which difficulty level
+            1.Hard
+            2.Medium
+             """))
+    if  diffLevel == '1':
+        newSets=diffDict.get(diffLevel)
+        updateDictionaries(newSets)
+    if diffLevel == '2':
+        newSets=diffDict.get(diffLevel)
+        updateDictionaries(newSets)
 
 
 
