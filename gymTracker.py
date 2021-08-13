@@ -17,6 +17,12 @@ def updateDictionaries():
         legs_workout[k] = '15*3'
     for k in back_workout:
         back_workout[k] = '15*3'
+
+def calcBMI():
+    BMI = weight / (height/100)**2
+    print(f"You BMI is {BMI}")
+
+    
     
 
 
@@ -30,6 +36,15 @@ uName = input("Enter your Username --> ")
 email = input("Enter your email-id --> ")
 emailDict[uName]=email
 print(emailDict)
+# Building some logic around BMI and weight trainings : 
+height = float(input("Enter your height in cm: "))
+weight = float(input("Enter your weight in kg: "))
+calcBMI()
+
+#if userWeight:
+    #pass
+    # calculating BMI
+
 #emailCheck = email in emailDict.values()
 #if emailCheck == True:
 
@@ -145,6 +160,11 @@ if dayToday:
 counter +=1
 if counter == 7:
     updateDictionaries()
+
+
+
+
+
 
 
 
