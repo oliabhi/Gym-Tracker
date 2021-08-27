@@ -5,7 +5,5 @@
         - INPUTS -  Takes user name , email , height , day of the week
         - Calculates BMI  
         - Tells part to train : Parses JSON of the workout
-
     - Library Used - pprint
     - Scale Up operation - planning to add emails logic which will send entire week schedule
-    
